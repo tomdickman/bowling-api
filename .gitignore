@@ -1,0 +1,19 @@
+# OSX file guff
+.DS_Store
+
+# IDE files
+.vscode/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules/
+
+# npm cache directory
+.npm
+
+# eslint cache
+.eslintcache
