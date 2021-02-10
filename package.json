@@ -2,6 +2,7 @@
   "name": "bowling",
   "version": "0.0.1",
   "description": "A set of APIs for scoring a ten pin bowling game",
+  "type": "module",
   "main": "Game.js",
   "scripts": {
     "test": "mocha tests/unit/"
