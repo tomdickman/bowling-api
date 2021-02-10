@@ -1,0 +1,24 @@
+{
+  "name": "bowling",
+  "version": "0.0.1",
+  "description": "A set of APIs for scoring a ten pin bowling game",
+  "main": "Game.js",
+  "scripts": {
+    "test": "mocha tests/unit/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomdickman/bowling-api.git"
+  },
+  "author": "Tom Dickman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomdickman/bowling-api/issues"
+  },
+  "homepage": "https://github.com/tomdickman/bowling-api#readme",
+  "devDependencies": {
+    "chai": "^4.3.0",
+    "eslint": "^7.19.0",
+    "mocha": "^8.2.1"
+  }
+}
