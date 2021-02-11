@@ -158,4 +158,17 @@ describe('Frame', () => {
             assert.throws(() => frame.strikeRoll(0), 'Cannot record more than two strike rolls per frame.');
         });
     });
+
+    describe('score', () => {
+        it('should correctly calculate the frame total including frame rolls and spare/strike rolls.', () => {
+            assert.equal(6, new Frame(1).roll(3).roll(3).score());
+            assert.equal(8, new Frame(2).roll(0).roll(8).score());
+            assert.equal(17, new Frame(3).roll(9).roll(1).spareRoll(7).score());
+            assert.equal(20, new Frame(4).roll(5).roll(5).spareRoll(10).score());
+            assert.equal(10, new Frame(5).roll(10).strikeRoll(0).strikeRoll(0).score());
+            assert.equal(20, new Frame(6).roll(10).strikeRoll(10).strikeRoll(0).score());
+            assert.equal(22, new Frame(7).roll(10).strikeRoll(10).strikeRoll(2).score());
+            assert.equal(30, new Frame(10).roll(10).strikeRoll(10).strikeRoll(10).score());
+        });
+    });
 });

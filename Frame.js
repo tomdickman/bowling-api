@@ -93,6 +93,15 @@ export default class Frame {
     }
 
     /**
+     * Get the total score for the frame, including spare/strike rolls.
+     *
+     * @returns {number} integer total score for this frame.
+     */
+    score() {
+        return this.rollScore() + this.spareOrStrikeRollscore();
+    }
+
+    /**
      * Get the total score for all frame spare or strike rolls.
      *
      * @returns {number} integer total of all spare rolls.

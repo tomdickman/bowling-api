@@ -53,3 +53,8 @@ __Returns__
 
 __Returns__
 - `Boolean`: `true` if the first and only roll in the Frame was a 10.
+---
+`Frame.score() : Number` - Get the current total Frame score.
+
+__Returns__
+- `Number`: The total of all recorded Frame rolls and spare or strike rolls.
