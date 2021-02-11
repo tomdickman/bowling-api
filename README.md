@@ -27,3 +27,29 @@ __Returns__
 
 __Returns__
 - `Number`: integer total between 0 and 10.
+---
+`Frame.spareRoll(noOfPins) : Frame` - Record the number of pins knocked over in a spare roll for Frame.
+
+__Parameters__
+- `noOfPins`: an integer Number between 0 and 10 (inclusive).
+
+__Returns__
+- `Frame`: the Frame itself for method chaining.
+---
+`Frame.strikeRoll(noOfPins) : Frame` - Record the number of pins knocked over in a strike roll for Frame.
+
+__Parameters__
+- `noOfPins`: an integer Number between 0 and 10 (inclusive).
+
+__Returns__
+- `Frame`: the Frame itself for method chaining.
+---
+`Frame.isSpare() : Boolean` - Check if the Frame score constitutes a spare.
+
+__Returns__
+- `Boolean`: `true` if the total across the two rolls was 10 (excluding if the Frame was a strike), `false` otherwise.
+---
+`Frame.isStrike() : Boolean` - Check if the Frame score constitutes a strike.
+
+__Returns__
+- `Boolean`: `true` if the first and only roll in the Frame was a 10.
