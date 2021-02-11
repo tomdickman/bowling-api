@@ -1,7 +1,7 @@
 'use strict';
 
-import Frame from '../../Frame.js';
 import { assert } from 'chai';
+import Frame from '../../Frame.js';
 
 describe('Frame', () => {
     describe('constructor', () => {
@@ -39,18 +39,18 @@ describe('Frame', () => {
 
         it('should only be able to record two rolls maximum.', () => {
             const frame = new Frame(1).roll(4).roll(4);
-            assert.throws(() => { frame.roll(2) }, 'Cannot add a new roll, two rolls already recorded.');
+            assert.throws(() => { frame.roll(2); }, 'Cannot add a new roll, two rolls already recorded.');
         });
 
         it('should only be able to add a roll if resulting total will not be greater than 11.', () => {
             const frame = new Frame(1).roll(5);
-            assert.throws(() => { frame.roll(6) }, 'Total for all rolls cannot exceed 10.');
-        })
+            assert.throws(() => { frame.roll(6); }, 'Total for all rolls cannot exceed 10.');
+        });
 
         it('should not be able to add a second roll if the first roll was a strike (10 pins).', () => {
             const frame = new Frame(1).roll(10);
-            assert.throws(() => { frame.roll(0) }, 'Cannot add a new roll, all pins have been scored already.')
-        })
+            assert.throws(() => { frame.roll(0); }, 'Cannot add a new roll, all pins have been scored already.');
+        });
     });
 
     describe('rollScore', () => {
@@ -58,7 +58,7 @@ describe('Frame', () => {
             assert.equal(8, new Frame(1).roll(4).roll(4).rollScore());
             assert.equal(10, new Frame(2).roll(10).rollScore());
             assert.equal(0, new Frame(3).roll(0).roll(0).rollScore());
-            assert.equal(0, new Frame(4).rollScore())
-        })
-    })
+            assert.equal(0, new Frame(4).rollScore());
+        });
+    });
 });
