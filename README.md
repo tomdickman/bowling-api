@@ -8,14 +8,14 @@ Manage an individual frame within a bowling game.
 
 ### Constructor
 ---
-`new Frame(number)`
+`new Frame(Number: number)`
 
 __Parameters__
 - `number`: an integer Number between 1 and 10 (inclusive).
 
 ### Methods
 ---
-`Frame.roll(noOfPins) : Frame` - Record the number of pins knocked over by a roll in the frame.
+`Frame.roll(Number: noOfPins) : Frame` - Record the number of pins knocked over by a roll in the frame.
 
 __Parameters__
 - `noOfPins`: an integer Number between 0 and 10 (inclusive).
@@ -28,7 +28,7 @@ __Returns__
 __Returns__
 - `Number`: integer total between 0 and 10.
 ---
-`Frame.spareRoll(noOfPins) : Frame` - Record the number of pins knocked over in a spare roll for Frame.
+`Frame.spareRoll(Number: noOfPins) : Frame` - Record the number of pins knocked over in a spare roll for Frame.
 
 __Parameters__
 - `noOfPins`: an integer Number between 0 and 10 (inclusive).
@@ -36,7 +36,7 @@ __Parameters__
 __Returns__
 - `Frame`: the Frame itself for method chaining.
 ---
-`Frame.strikeRoll(noOfPins) : Frame` - Record the number of pins knocked over in a strike roll for Frame.
+`Frame.strikeRoll(Number: noOfPins) : Frame` - Record the number of pins knocked over in a strike roll for Frame.
 
 __Parameters__
 - `noOfPins`: an integer Number between 0 and 10 (inclusive).
@@ -58,3 +58,15 @@ __Returns__
 
 __Returns__
 - `Number`: The total of all recorded Frame rolls and spare or strike rolls.
+---
+---
+## Game
+
+Manage an individual frame within a bowling game.
+
+### Constructor
+---
+`new Game(String: playerName)`
+
+__Parameters__
+- `playerName`: the name of the player this bowling game is for.
