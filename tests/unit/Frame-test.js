@@ -30,11 +30,11 @@ describe('Frame', () => {
 
         it('should be able to record a score between 0 and 10 for each roll.', () => {
             const frame = new Frame(1).roll(9);
-            assert.equal(1, frame.rolls.length);
-            assert.equal(9, frame.rolls[0]);
+            assert.equal(frame.rolls.length, 1);
+            assert.equal(frame.rolls[0], 9);
             frame.roll(1);
-            assert.equal(2, frame.rolls.length);
-            assert.equal(1, frame.rolls[1]);
+            assert.equal(frame.rolls.length, 2);
+            assert.equal(frame.rolls[1], 1);
         });
 
         it('should only be able to record two rolls maximum.', () => {
@@ -55,10 +55,10 @@ describe('Frame', () => {
 
     describe('rollScore', () => {
         it('should correctly add the value of all rolls made in the frame (excluding spare and strike rolls.)', () => {
-            assert.equal(8, new Frame(1).roll(4).roll(4).rollScore());
-            assert.equal(10, new Frame(2).roll(10).rollScore());
-            assert.equal(0, new Frame(3).roll(0).roll(0).rollScore());
-            assert.equal(0, new Frame(4).rollScore());
+            assert.equal(new Frame(1).roll(4).roll(4).rollScore(), 8);
+            assert.equal(new Frame(2).roll(10).rollScore(), 10);
+            assert.equal(new Frame(3).roll(0).roll(0).rollScore(), 0);
+            assert.equal(new Frame(4).rollScore(), 0);
         });
     });
 
@@ -123,7 +123,7 @@ describe('Frame', () => {
         it('should be able to record a spare roll if the frame was a spare', () => {
             const frame = new Frame(1).roll(4).roll(6).spareRoll(4);
             assert.isTrue(frame.isSpare());
-            assert.equal(4, frame.spareOrStrikeRollscore());
+            assert.equal(frame.spareOrStrikeRollscore(), 4);
         });
 
         it('should not be able to add a spare roll if spare roll has already been recorded', () => {
@@ -150,7 +150,7 @@ describe('Frame', () => {
         it('should be able to record up to two strike rolls if the frame was a strike', () => {
             const frame = new Frame(1).roll(10).strikeRoll(10).strikeRoll(6);
             assert.isTrue(frame.isStrike());
-            assert.equal(16, frame.spareOrStrikeRollscore());
+            assert.equal(frame.spareOrStrikeRollscore(), 16);
         });
 
         it('should not be able to record any more than two strike rolls', () => {
@@ -161,14 +161,14 @@ describe('Frame', () => {
 
     describe('score', () => {
         it('should correctly calculate the frame total including frame rolls and spare/strike rolls.', () => {
-            assert.equal(6, new Frame(1).roll(3).roll(3).score());
-            assert.equal(8, new Frame(2).roll(0).roll(8).score());
-            assert.equal(17, new Frame(3).roll(9).roll(1).spareRoll(7).score());
-            assert.equal(20, new Frame(4).roll(5).roll(5).spareRoll(10).score());
-            assert.equal(10, new Frame(5).roll(10).strikeRoll(0).strikeRoll(0).score());
-            assert.equal(20, new Frame(6).roll(10).strikeRoll(10).strikeRoll(0).score());
-            assert.equal(22, new Frame(7).roll(10).strikeRoll(10).strikeRoll(2).score());
-            assert.equal(30, new Frame(10).roll(10).strikeRoll(10).strikeRoll(10).score());
+            assert.equal(new Frame(1).roll(3).roll(3).score(), 6);
+            assert.equal(new Frame(2).roll(0).roll(8).score(), 8);
+            assert.equal(new Frame(3).roll(9).roll(1).spareRoll(7).score(), 17);
+            assert.equal(new Frame(4).roll(5).roll(5).spareRoll(10).score(), 20);
+            assert.equal(new Frame(5).roll(10).strikeRoll(0).strikeRoll(0).score(), 10);
+            assert.equal(new Frame(6).roll(10).strikeRoll(10).strikeRoll(0).score(), 20);
+            assert.equal(new Frame(7).roll(10).strikeRoll(10).strikeRoll(2).score(), 22);
+            assert.equal(new Frame(10).roll(10).strikeRoll(10).strikeRoll(10).score(), 30);
         });
     });
 });
