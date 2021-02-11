@@ -15,5 +15,6 @@ node_modules/
 # npm cache directory
 .npm
 
-# eslint cache
+# eslint files
 .eslintcache
+.eslintrc.json
