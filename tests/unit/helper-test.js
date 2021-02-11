@@ -16,7 +16,7 @@ describe('helper', () => {
             assert.isFalse(validNoOfPins(11));
         });
 
-        it('should not validate if the number of pins is an integer between 0 and 10 (inclusive).', () => {
+        it('should validate if the number of pins is an integer between 0 and 10 (inclusive).', () => {
             assert.isTrue(validNoOfPins(0));
             assert.isTrue(validNoOfPins(5));
             assert.isTrue(validNoOfPins(10));
