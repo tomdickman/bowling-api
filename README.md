@@ -70,3 +70,18 @@ Manage an individual frame within a bowling game.
 
 __Parameters__
 - `playerName`: the name of the player this bowling game is for.
+
+### Methods
+---
+`Game.roll(Number: noOfPins) : Game` - Record the number of pins knocked over by a roll in the game.
+
+__Parameters__
+- `noOfPins`: an integer Number between 0 and 10 (inclusive).
+
+__Returns__
+- `Game`: the Game itself for method chaining.
+---
+`Game.score() : Number` - Get the current total Game score.
+
+__Returns__
+- `Number`: The total of all recorded Frame scores within the Game.
