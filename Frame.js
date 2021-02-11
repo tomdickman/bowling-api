@@ -1,3 +1,5 @@
+import validNoOfPins from './utilities/helper.js';
+
 /**
  * Frame class for scoring an individual frame of a bowling game.
  */
@@ -6,6 +8,12 @@ export default class Frame {
      * @var {Number[]} rolls the rolls made in this frame.
      */
     rolls = [];
+
+    /**
+     * @var {Number[]} spareOrStrikeRolls rolls made in subsequent frames for
+     * spares or strikes which apply to this frame.
+     */
+    spareOrStrikeRolls = [];
 
     /**
      * Frame constructor.
@@ -24,6 +32,24 @@ export default class Frame {
         }
 
         this.number = number;
+    }
+
+    /**
+     * Was a spare scored in this frame?
+     *
+     * @returns {Boolean} true if spare was scored, false otherwise.
+     */
+    isSpare() {
+        return (this.rolls.length === 2 && this.rollScore() === 10);
+    }
+
+    /**
+     * Was a strike scored in this frame?
+     *
+     * @returns {Boolean} true if strike was scored, false otherwise.
+     */
+    isStrike() {
+        return (this.rolls.length === 1 && this.rollScore() === 10);
     }
 
     /**
@@ -64,5 +90,66 @@ export default class Frame {
      */
     rollScore() {
         return this.rolls.reduce((a, b) => a + b, 0);
+    }
+
+    /**
+     * Get the total score for all frame spare or strike rolls.
+     *
+     * @returns {number} integer total of all spare rolls.
+     */
+    spareOrStrikeRollscore() {
+        return this.spareOrStrikeRolls.reduce((a, b) => a + b, 0);
+    }
+
+    /**
+     * Record the value of a spare roll for this frame.
+     *
+     * @param {number} noOfPins the number of pins knocked over by a roll.
+     *
+     * @returns {Frame} this.
+     * @throws {Error} if roll was invalid.
+     */
+    spareRoll(noOfPins) {
+        if (!validNoOfPins(noOfPins)) {
+            throw new Error("Invalid 'noOfPins' value, must be an integer between 0 and 10");
+        }
+
+        if (!this.isSpare()) {
+            throw new Error('Cannot add a spare roll, frame was not a spare.');
+        }
+
+        if (this.spareOrStrikeRolls.length === 1) {
+            throw new Error('Cannot add a spare roll, frame already has spare roll recorded.');
+        }
+
+        this.spareOrStrikeRolls.push(noOfPins);
+
+        return this;
+    }
+
+    /**
+     * Record the value of a strike roll for this frame.
+     *
+     * @param {number} noOfPins the number of pins knocked over by a roll.
+     *
+     * @returns {Frame} this.
+     * @throws {Error} if roll was invalid.
+     */
+    strikeRoll(noOfPins) {
+        if (!validNoOfPins(noOfPins)) {
+            throw new Error("Invalid 'noOfPins' value, must be an integer between 0 and 10");
+        }
+
+        if (!this.isStrike()) {
+            throw new Error('Cannot add a strike roll, frame was not a strike.');
+        }
+
+        if (this.spareOrStrikeRolls.length === 2) {
+            throw new Error('Cannot record more than two strike rolls per frame.');
+        }
+
+        this.spareOrStrikeRolls.push(noOfPins);
+
+        return this;
     }
 }
