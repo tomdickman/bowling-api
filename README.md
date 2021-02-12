@@ -2,6 +2,10 @@
 
 A set of Javascript APIs for scoring a bowling game.
 
+# Requirements
+
+The modules contained with this are ECMAScript 6 modules and as such, requires node ^14.0.0 and npm ^6.0.0
+
 # Classes
 
 ## Game
